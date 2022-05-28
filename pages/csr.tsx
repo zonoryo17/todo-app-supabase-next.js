@@ -13,7 +13,7 @@ const Csr: NextPage = () => {
       const { data: tasks } = await supabase
         .from('todos')
         .select('*')
-        .order('created_at, { ascending: true }')
+        .order('created_at', { ascending: true })
       setTasks(tasks as Task[])
     }
     const getNotices = async () => {
