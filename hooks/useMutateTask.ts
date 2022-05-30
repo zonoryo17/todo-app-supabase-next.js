@@ -15,9 +15,9 @@ export const useMutateTask = () => {
     },
     {
       onSuccess: (res) => {
-        const previousTodos = queryClient.getQueriesData<Task[]>('todos')
+        const previousTodos = queryClient.getQueryData<Task[]>('todos')
         if (previousTodos) {
-          queryClient.setQueriesData('todos', [...previousTodos, res[0]])
+          queryClient.setQueryData('todos', [...previousTodos, res[0]])
         }
         reset()
       },
@@ -78,4 +78,5 @@ export const useMutateTask = () => {
       },
     }
   )
+  return { deleteTaskMutation, createTaskMutation, updateTaskMutation }
 }

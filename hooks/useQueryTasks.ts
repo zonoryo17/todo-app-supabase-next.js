@@ -7,7 +7,7 @@ export const useQueryTasks = () => {
     const { data, error } = await supabase
       .from('todos')
       .select('*')
-      .order('create_at', { ascending: true })
+      .order('created_at', { ascending: true })
 
     if (error) {
       throw new Error(error.message)

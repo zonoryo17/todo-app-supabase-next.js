@@ -1,6 +1,6 @@
-import { supabase } from '../utils/supabase'
 import { useQueryClient, useMutation } from 'react-query'
 import useStore from '../store'
+import { supabase } from '../utils/supabase'
 import { Notice, EditedNotice } from '../types/types'
 
 export const useMutateNotice = () => {
@@ -15,9 +15,9 @@ export const useMutateNotice = () => {
     },
     {
       onSuccess: (res) => {
-        const previousNotices = queryClient.getQueriesData<Notice[]>('todos')
+        const previousNotices = queryClient.getQueryData<Notice[]>('notices')
         if (previousNotices) {
-          queryClient.setQueriesData('todos', [...previousNotices, res[0]])
+          queryClient.setQueryData('notices', [...previousNotices, res[0]])
         }
         reset()
       },
