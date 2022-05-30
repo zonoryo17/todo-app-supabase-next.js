@@ -31,7 +31,7 @@ export const useMutateNotice = () => {
     async (notice: EditedNotice) => {
       const { data, error } = await supabase
         .from('notices')
-        .update({ title: notice.content })
+        .update({ content: notice.content })
         .eq('id', notice.id)
       if (error) throw new Error(error.message)
       return data
